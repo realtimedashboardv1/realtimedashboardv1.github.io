@@ -281,7 +281,7 @@ circle {
 #explanation {
   position: absolute;
   top: 20em;
-  left: 18.5em;
+  left: 25em;
   width: 140px;
   text-align: center;
   color: #666;
@@ -295,7 +295,7 @@ circle {
 #pagelabel {
   position:absolute;
   top: 23em;
-  left: 17em;
+  left: 23em;
   z-index:-10;
   width: 180px;
 }
