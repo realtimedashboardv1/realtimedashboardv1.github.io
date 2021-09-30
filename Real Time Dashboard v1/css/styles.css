@@ -1,0 +1,326 @@
+body {
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.clearfix::before,
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+a, a:visited {
+    border: none;
+    color: #000000;
+    font-size: 1em;
+    text-decoration: none;
+    outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+table {
+    color:#666;
+    font-size:12px;
+    text-shadow: 1px 1px 0px #fff;
+    background:#eaebec;
+    margin:5px;
+    border:#ccc 1px solid;
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+}
+
+table th {
+    padding:11px 15px 12px 15px;
+    border-top:1px solid #fafafa;
+    border-bottom:1px solid #e0e0e0;
+    background: #ededed;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+
+table th:first-child {
+    text-align: left;
+    padding-left:20px;
+}
+
+table tr {
+    text-align: center;
+    padding-left:20px;
+}
+
+table td:first-child {
+    text-align: left;
+    padding-left:20px;
+    border-left: 0;
+}
+
+table td {
+    padding:8px;
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+    background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+
+table tr.even td {
+    background: #f6f6f6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+    background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+
+table tr:last-child td {
+    border-bottom:0;
+}
+
+table tr:hover td {
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+    background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+}
+
+#header {
+     background: linear-gradient(to right, #67b26b, #4ca2cb);
+    height: 46px;
+    margin-bottom: 1em;
+    font-family: sans-serif;
+    line-height: 46px;
+    color: white;
+}
+
+.heading {
+  display: inline-block;
+  padding-left: 2em;
+  width: 350px;
+}
+
+.reportsuitenav {
+  color: #fff;
+  display: inline;
+  float: right;
+  padding-right: 2em;
+}
+
+.reportsuitenav ul li {
+  display: inline;
+}
+
+/* Anything that needs to be in the main content */
+.content {
+    padding-left: 15px;
+    padding-right: 15px;
+    /*Adjust this if you need to make the dashboard wider*/
+    max-width: 960px;
+}
+
+/*CSS Clear Fix*/
+.content:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    clear: both;
+}
+
+.main-content {
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  /*Adjust this if you need to make the dashboard wider*/
+  width: 95%;
+}
+
+.left-container {
+  border: 1px solid black;
+  float: left;
+  padding: 2em;
+  width: 15%;
+}
+
+.right-container {
+  border: 1px solid black;
+}
+
+.counts {
+    text-align: right;
+}
+
+.data-table {
+    width: 100%;
+}
+
+.chart {
+    height: 100%;
+    width: 100%;
+}
+
+.heading-one {
+  font-size: 40px;
+  padding: 1em 0 1em 0;
+  text-align: center;
+  width: 100%;
+}
+
+#reportsuiteid {
+  color: #fff;
+}
+
+.number {
+    display: block;
+    font-size:60px;
+    text-align: center;
+}
+
+.no-data {
+    font-size: 40px;
+    color: red;
+}
+
+/*Mobile Changes*/
+@media (max-width: 640px) {
+    .widget {
+        float: none;
+        width: auto;
+    }
+    .half {
+        width: auto;
+    }
+}
+
+/* For realtime graph */
+path {
+    stroke: #5687d1;
+    stroke-width: 3;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #e0e0e0;
+  shape-rendering: crispEdges;
+}
+
+circle {
+    stroke: #999;
+    stroke-width: 2;
+    fill: white;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis line {
+  stroke: #e0e0e0;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
+.x.axis path {
+  stroke: #e0e0e0;
+}
+
+.y.axis line, .y.axis path {
+  fill: none;
+  stroke: #e0e0e0;
+}
+
+#trendGraph {
+  border: 1px solid;
+  height: 400px;
+  padding-top: 8em;
+  padding-left: 10em;
+}
+
+#donutChart {
+  border: 1px solid;
+  height: 400px;
+  width: 100%;
+}
+
+#donutChart path {
+  stroke: #fff;
+}
+
+#donutChart > svg {
+  cursor: pointer;
+  position: absolute;
+  top: 10em;
+  right: 30em;
+}
+
+#legend {
+  padding: 15px 0 0 3px;
+  float: right;
+  margin-right: 15em;
+  width: 140px;
+}
+
+#legend text {
+  fill: #fff;
+  font-size: 10px;
+}
+
+#explanation {
+  position: absolute;
+  top: 20em;
+  left: 18.5em;
+  width: 140px;
+  text-align: center;
+  color: #666;
+  z-index: -1;
+}
+
+#percentage {
+  font-size: 2.5em;
+}
+
+#pagelabel {
+  position:absolute;
+  top: 23em;
+  left: 17em;
+  z-index:-10;
+  width: 180px;
+}
+
+#pagelabel text {
+  text-align: center;
+  font-weight: 600;
+  fill: #fff;
+  font-size: 12px;
+}
+
+/*Loading animation while waiting*/
+
+.wait {
+  width: 2rem;
+  height: 2rem;
+  background-image: url(../img/wait_32.gif);
+  -webkit-animation: wait-large 1.6s step-end infinite;
+  animation: wait-large 1.6s step-end infinite;
+  display: inline-block;
+  -webkit-background-size: auto 100%;
+  -moz-background-size: auto 100%;
+  -o-background-size: auto 100%;
+  background-size: auto 100%;
+  -webkit-background-size: auto 100% auto 100%;
+  -moz-background-size: auto 100% auto 100%;
+  background-size: auto 100% auto 100%;
+}
