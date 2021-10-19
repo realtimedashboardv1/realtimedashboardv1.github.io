@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
 
     <!--Include the libraries we will be using -->
+    <script src="https://kit.fontawesome.com/27c30df006.js" crossorigin="anonymous"></script>
     <script src="js/jquery-2.1.0.min.js" type="text/javascript"></script>
     <!-- Using D3 for Charting -->
     <script src="js/d3.v2.js" type="text/javascript"></script>
@@ -50,8 +51,7 @@
             }
         };
 
-        // Change the time to fetch data older than T - 15
-        params.reportDescription.dateFrom = "-35 minutes";
+        
 
         //var trendGraph = new AnimatedTrendGraph("#trendGraph", { width: 660, height: 200, delay: 60000 });
         var donutChart = new DonutChart("#donutChart", { width: 300, height: 450 });
@@ -102,9 +102,13 @@
                     setPageTotals(report);
                     if (report.pageTotals.length == 0) {
                         $('#total').html('<span class="no-data">No Data</span>');
+                        document.getElementById('donutChart').style.display = "none";
+                        document.getElementById('ranked').style.display = "none";
                     } else {
                         var event = jQuery.Event("realtime-data-received");
                         $(document).trigger(event, report);
+                        document.getElementById('donutChart').style.display = "block";
+                        document.getElementById('ranked').style.display = "block";
                     }
                 }
             });
@@ -131,13 +135,25 @@
             var interval = setInterval(makeRealTimeRequest, time);
             // request the initial report
             makeRealTimeRequest();
+
+            document.getElementById('time').addEventListener('change', function() {
+                params.reportDescription.dateFrom = this.value;
+            });
         });
     </script>
 </head>
 
 <body id="index" class="home">
     <div id="dashboard" class="main-content clearfix">
-        <div id="numberWidget" class="widget third">
+        <select id="time">
+            <option value="-15 minutes" class="selected">Last 15 minutes</option>
+            <option value="-30 minutes">Last 30 minutes</option>
+            <option value="-60 minutes">Last 1 hour</option>
+            <option value="-120 minutes">Last 2 hours</option>
+        </select>
+        <span id="clock-icon"><i class="far fa-clock"></i></span>
+
+        <div id="numberWidget" class="widget third section">
             <div class="heading-one">
                 <h1>Page Views</h1>
                 <span id="total" class="number"><span class="wait"></span></span>
@@ -146,7 +162,7 @@
 
         <!-- <div id="trendGraph"></div> -->
 
-        <div id="donutChart">
+        <div id="donutChart" class="section">
             <div id="explanation" style="visibility: hidden;">
                 <span id="percentage"></span><br />
                 of visitors visited
@@ -155,11 +171,12 @@
             <div id="legend">&nbsp;</div>
         </div>
 
-        <div id="ranked">
+        <div id="ranked" class="section">
             <!-- data table -->
             <div id="data-table">&nbsp;</div>
         </div>
     </div>
+
     <footer>
     </footer>
 </body>

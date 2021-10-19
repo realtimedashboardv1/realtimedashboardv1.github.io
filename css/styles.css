@@ -1,8 +1,8 @@
 body {
-    color: #000000;
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Poppins', sans-serif;
+  color: #000000;
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .clearfix {
@@ -27,8 +27,6 @@ a, a:visited {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
 }
-
-
 
 table {
     color:#666;
@@ -152,8 +150,14 @@ table tr:hover td {
 }
 
 .right-container {
-  border: 1px solid blue;
+  border: 1px solid gray;
   float: right;
+}
+
+.section {
+  border: 1.5px solid #cdcdcc;
+  border-radius: 1.25%;
+  margin: 1em 0;
 }
 
 .counts {
@@ -161,12 +165,36 @@ table tr:hover td {
 }
 
 .data-table {
-    width: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 .chart {
     height: 100%;
     width: 100%;
+}
+
+#numberWidget {
+  margin-top: 2.25em;
+  padding: 1em;
+}
+
+#clock-icon {
+  display: inline-block;
+  float: right;
+  margin-top: 0.55em;
+  margin-right: 0.5em;
+}
+
+#time {
+  float: right;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0.5em;
+}
+
+.selected {
+  background-color: rgb(8, 123, 255);
+  color: #fff;
 }
 
 .heading-one {
@@ -251,7 +279,6 @@ circle {
 }
 
 #donutChart {
-  border: 1px solid;
   height: 400px;
   width: 100%;
 }
@@ -263,7 +290,7 @@ circle {
 #donutChart > svg {
   cursor: pointer;
   position: absolute;
-  top: 10em;
+  top: 13.5em;
   right: 30em;
 }
 
@@ -281,7 +308,7 @@ circle {
 
 #explanation {
   position: absolute;
-  top: 20em;
+  top: 22.5em;
   left: 25em;
   width: 140px;
   text-align: center;
@@ -295,7 +322,7 @@ circle {
 
 #pagelabel {
   position:absolute;
-  top: 23em;
+  top: 25.5em;
   left: 23em;
   z-index:-10;
   width: 180px;

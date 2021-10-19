@@ -19,3 +19,4 @@ Array.prototype.map = function(fun /*, thisp*/) {
 
     return res;
 };
+
