@@ -100,9 +100,11 @@
                     setPageTotals(report);
                     if (report.pageTotals.length == 0) {
                         $('#total').html('<span class="no-data">No Data</span>');
+                        document.getElementById('ranked').style.display = "none";
                     } else {
                         var event = jQuery.Event("realtime-data-received");
                         $(document).trigger(event, report);
+                        document.getElementById('ranked').style.display = "block";
                     }
                 }
             });
@@ -135,7 +137,7 @@
 
 <body id="index" class="home">
     <div id="dashboard" class="main-content clearfix">
-        <div id="numberWidget" class="widget third">
+        <div id="numberWidget" class="section">
             <div class="heading-one">
                 <h1>Cart Additions</h1>
                 <span id="total" class="number"><span class="wait"></span></span>
@@ -153,7 +155,7 @@
             <div id="legend">&nbsp;</div>
         </div> -->
 
-        <div id="ranked">
+        <div id="ranked" class="section">
             <!-- data table -->
             <div id="data-table">&nbsp;</div>
         </div>

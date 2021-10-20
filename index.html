@@ -42,7 +42,13 @@
         var makeRealTimeRequest = function () {
             MarketingCloud.makeRequest(config.username, config.secret, method, params, config.endpoint, function (response) {
                 if (response.status == 200) {
-                    
+                    var obj = document.getElementById('test-iframe');
+                    obj.style.height = obj.contentWindow.document.body.scrollHeight  + 'px';
+                }
+                else
+                {
+                    var obj = document.getElementById('test-iframe');
+                    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
                 }
             });
         };
@@ -66,7 +72,9 @@
             document.getElementById('cart').addEventListener('click', function () {
                 document.getElementById('test-iframe').src = "cart-additions.html"
             })
+
         });
+
     </script>
 </head>
 
@@ -90,10 +98,58 @@
             </nav>
         </div>
         <div class="right-container">
-            <iframe id="test-iframe" src="landingpage.html" width="1100" height="1000" frameborder="0" scrolling="no"></iframe>
+            <iframe id="test-iframe" src="landingpage.html" frameborder="0" width="1100" scrolling="no"></iframe>
         </div>
     </div>
-    <footer>
+    <footer class="footer">
+        <div class="container footer__wrapper clearfix">
+            <div class="footer__column-one">
+                <a href="index.html" class="logo logo-small">
+                    <img src="img/TA logo.png" />
+                </a>
+            </div>
+            <div class="footer__column-two">
+                <h3>Location</h3>
+                <nav>
+                    <ul>
+                        <li><a href="#">Advanced</a></li>
+                        <li><a href="#">Management</a></li>
+                        <li><a href="#">Corporate</a></li>
+                        <li><a href="#">Customer</a></li>
+                        <li><a href="#">Information</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__column-three">
+                <h3>Explore</h3>
+                <nav>
+                    <ul>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Properties</a></li>
+                        <li><a href="#">Licenses</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__column-four">
+                <h3>Contact</h3>
+                <span class="tel-number">+91 7885 3222</span>
+                <span class="contact-email">contactus@mail.com</span>
+            </div>
+            <div class="footer__seperator"></div>
+            <div class="footer__bottom">
+                <span class="copyright">Copyright ©2021 TA Digital | All rights reserved</span>
+                <nav>
+                    <ul>
+                        <li><a href="#"><span><i class="fab fa-facebook-f"></i></span></a></li>
+                        <li><a href="#"><span><i class="fab fa-instagram"></i></span></a></li>
+                        <li><a href="#"><span><i class="fab fa-twitter"></i></span></a></li>
+                        <li><a href="#"><span><i class="fab fa-linkedin"></i></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </footer>
 </body>
 
