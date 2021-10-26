@@ -109,6 +109,7 @@
                         $(document).trigger(event, report);
                         document.getElementById('donutChart').style.display = "block";
                         document.getElementById('ranked').style.display = "block";
+                        // console.log('api-response-received');
                     }
                 }
             });
@@ -136,8 +137,10 @@
             // request the initial report
             makeRealTimeRequest();
 
-            document.getElementById('time').addEventListener('change', function() {
+            document.getElementById('time').addEventListener('change', function(obj) {
                 params.reportDescription.dateFrom = this.value;
+                makeRealTimeRequest();
+                console.log(obj.target.value);
             });
         });
     </script>
@@ -146,7 +149,7 @@
 <body id="index" class="home">
     <div id="dashboard" class="main-content clearfix">
         <select id="time">
-            <option value="-15 minutes" class="selected">Last 15 minutes</option>
+            <option value="-15 minutes">Last 15 minutes</option>
             <option value="-30 minutes">Last 30 minutes</option>
             <option value="-60 minutes">Last 1 hour</option>
             <option value="-120 minutes">Last 2 hours</option>

@@ -28,26 +28,44 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
 }
 
-#header {
-  background: #000000;
-  height: 46px;
-  margin-bottom: 2.5em;
-  font-family: sans-serif;
-  padding: 1em 0 0 0;
+#container {
+  border: 1px solid #cdcdcc;
+  border-radius: 7px;
+  border-left: 4px solid orange;
+  /* box-shadow: 1px 6px 10px 0px rgba(0,0,0,0.75); */
+  margin: 0 auto;
+  padding: 1em;
+  width: 1200px;
 }
 
-.heading {
-  display: inline-block;
-  font-family: 'Poppins', sans-serif;
-  padding-left: 2em;
+.header {
+    background: linear-gradient(to right, #67b26b, #4ca2cb);
+    margin-bottom: 3em;
+    padding: 1.5em;
 }
 
-.heading a {
-  color: #fff;
+.logo img {
+  width: 10%;
 }
 
-.heading img {
-  width: 60%;
+.main-nav {
+    float: right;
+    padding-top: 0.7em;
+}
+
+.main-nav ul li { 
+    display: inline;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 2em;
+    padding-right: 2em;
+}
+
+.main-nav ul li.active {
+    text-decoration: underline;
+}
+
+.main-nav ul li a {
+    color: #2c2b2b; 
 }
 
 .reportsuitenav {
@@ -72,7 +90,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .left-container {
   border-radius: 7px;
-  border: 3px solid;
+  border: 2px solid;
   height: 11.3em;
   float: left;
   margin: 0 auto;
@@ -244,7 +262,7 @@ table tr:hover td {
 }
 
 #reportsuiteid {
-  color: #fff;
+  font-weight: bold;
 }
 
 .number {
@@ -393,8 +411,8 @@ circle {
 }
 
  .footer {
-    background-color: #000000;
-    background-repeat: no-repeat;
+    background-color: #2d3436;
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     background-size: cover;
     font-family: 'Poppins', sans-serif;
     margin-top: 4em;
@@ -429,7 +447,7 @@ circle {
  }
 
  .footer__column-four {
-     color: #7a7a7a;
+     color: #ffffff;
      font-size: 1.1em;
      float: right;
      padding: 1em 2em;
@@ -441,7 +459,7 @@ circle {
 }
 
 .footer ul li a {
-    color: #7a7a7a;
+    color: #ffffff;
     font-size: 0.9em;
     transform: rotateY(0deg);
     transition: 0.3s;
@@ -461,10 +479,14 @@ circle {
  .logo.logo-small {
      color: #ffffff;
      display: inline-block;
-     font-size: 2em;
      margin-bottom: 1em;
      padding: 2em;
-     padding-top: 3.5em;
+     padding-top: 6em;
+     padding-left: 8em;
+ }
+
+ .logo-small img {
+   width: 80%;
  }
 
  .footer__seperator {
@@ -490,10 +512,10 @@ circle {
  .footer__bottom ul li {
     display: inline;
     font-size: 1.2em;
-    padding-right: 0.5em;
+    padding-right: 1em;
  }
 
 .footer__bottom ul li a:hover {
-    color: #fff;
+    color: rgb(116, 116, 116);
     margin-left: 0;
 }
