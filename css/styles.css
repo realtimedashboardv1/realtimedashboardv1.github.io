@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 .left-container {
   border-radius: 7px;
   border: 2px solid;
-  height: 11.3em;
+  height: 5.5em;
   float: left;
   margin: 0 auto;
   padding: 2em;
@@ -182,12 +182,12 @@ table th {
 }
 
 table th:first-child {
-    /*text-align: left;*/
+    text-align: left;
     padding-left:20px;
 }
 
 table tr {
-    text-align: center;
+    /* text-align: center; */
     padding-left:20px;
 }
 
@@ -352,15 +352,19 @@ circle {
 }
 
 #legend {
-  padding: 15px 0 0 3px;
+  padding: 10px 0 0 3px;
   float: right;
-  margin-right: 19em;
+  margin-right: 15em;
+  width: 140px;
+}
+
+#legend.rect {
   width: 140px;
 }
 
 #legend text {
   fill: #fff;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #explanation {

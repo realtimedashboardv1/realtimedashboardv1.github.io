@@ -42,20 +42,17 @@
                 "source": "realtime",
                 "reportSuiteID": config.reportSuite,
                 "metrics": [
-                    { "id": "pageviews" }
-                ], "elements": [
-                    { "id": "page" }
+                    { "id": "instances" },
+                ], 
+                "elements": [
+                    { "id": "prop3" }
                 ],
                 "dateGranularity": "minute:1",
                 "dateFrom": "-15 minutes"
             }
         };
 
-        
-
-        //var trendGraph = new AnimatedTrendGraph("#trendGraph", { width: 660, height: 200, delay: 60000 });
-        var donutChart = new DonutChart("#donutChart", { width: 300, height: 450 });
-        var basicTable = new BasicTable("#data-table", { columns: ["Page Name", "Page Views"] });
+        var basicTable = new BasicTable("#data-table", { columns: ["Site Section", "Instances"] });
 
         // number counter
         $(document).on("realtime-data-received", function (event, report) {
@@ -72,22 +69,6 @@
             }, 500);
         });
 
-        // // trends graph
-        // $(document).on("realtime-data-received", function (event, report) {
-        //     // pull the minute totals for each minute
-        //     // formatted data is [100, 200, 300, ...] (newest data last)
-        //     data = report.data.map(function (minute) {
-        //         return parseInt(minute.breakdownTotal[0]);
-        //     });
-
-        //     //trendGraph.redrawGraph(data);
-        // });
-
-        // donut chart
-        $(document).on("realtime-data-received", function (event, report) {
-            // we only update this chart once a minute
-            donutChart.redrawChart(report.pageTotals);
-        });
 
         // data table
         $(document).on("realtime-data-received", function (event, report) {
@@ -102,14 +83,11 @@
                     setPageTotals(report);
                     if (report.pageTotals.length == 0) {
                         $('#total').html('<span class="no-data">No Data</span>');
-                        document.getElementById('donutChart').style.display = "none";
                         document.getElementById('ranked').style.display = "none";
                     } else {
                         var event = jQuery.Event("realtime-data-received");
                         $(document).trigger(event, report);
-                        document.getElementById('donutChart').style.display = "block";
                         document.getElementById('ranked').style.display = "block";
-                        // console.log('api-response-received');
                     }
                 }
             });
@@ -137,9 +115,10 @@
             // request the initial report
             makeRealTimeRequest();
 
-            document.getElementById('time').addEventListener('change', function(obj) {
+            document.getElementById('time').addEventListener('change', function (obj) {
                 params.reportDescription.dateFrom = this.value;
                 makeRealTimeRequest();
+                console.log(obj.target.value);
             });
         });
     </script>
@@ -154,23 +133,11 @@
             <option value="-120 minutes">Last 2 hours</option>
         </select>
         <span id="clock-icon"><i class="far fa-clock"></i></span>
-
-        <div id="numberWidget" class="widget third section">
+        <div id="numberWidget" class="section">
             <div class="heading-one">
-                <h1>Page Views</h1>
+                <h1>Instances</h1>
                 <span id="total" class="number"><span class="wait"></span></span>
             </div>
-        </div>
-
-        <!-- <div id="trendGraph"></div> -->
-
-        <div id="donutChart" class="section">
-            <div id="explanation" style="visibility: hidden;">
-                <span id="percentage"></span><br />
-                of visitors visited
-            </div>
-            <div id="pagelabel">&nbsp;</div>
-            <div id="legend">&nbsp;</div>
         </div>
 
         <div id="ranked" class="section">
@@ -178,6 +145,8 @@
             <div id="data-table">&nbsp;</div>
         </div>
     </div>
+    <footer>
+    </footer>
 </body>
 
 </html>
