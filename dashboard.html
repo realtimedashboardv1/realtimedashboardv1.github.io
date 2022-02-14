@@ -68,7 +68,9 @@
                 document.getElementById('test-iframe').src = "sitesection.html"
             })
             
-            // Add JS for more buttons here
+            document.getElementById('gsr').addEventListener('click', function() {
+                document.getElementById('test-iframe').src = "geosegmentation.html"
+            })
         });
     </script>
 </head>
@@ -92,7 +94,7 @@
                 <ul>
                     <li><button class="main-nav__btn" id="page"><a>Page<i class="fas fa-caret-right"></i></button></a></li>
                     <li><button class="main-nav__btn" id="site"><a>Site Section<i class="fas fa-caret-right"></i></button></a></li>
-                    <!-- Add more buttons here<li><button class="main-nav__btn" id="btn3"><a>Button 3<i class="fas fa-caret-right"></i></button></a></li> -->
+                    <li><button class="main-nav__btn" id="gsr"><a>Geosegmentation Region<i class="fas fa-caret-right"></i></button></a></li>
                 </ul>
             </nav>
         </div>
@@ -133,12 +135,12 @@
             </div>
             <div class="footer__column-four">
                 <h3>Contact</h3>
-                <span class="tel-number">+91 7885 3222</span>
-                <span class="contact-email">contactus@mail.com</span>
+                <span class="tel-number">040-42865880</span>
+                <span class="contact-email"><a href="https://www.tadigital.com" target="_blank">TA Digital</a></span>
             </div>
             <div class="footer__seperator"></div>
             <div class="footer__bottom">
-                <span class="copyright">Copyright ©2021 TA Digital | All rights reserved</span>
+                <span class="copyright">Copyright ©2021 TA Digital. All rights reserved</span>
                 <nav>
                     <ul>
                         <li><a href="#"><span><i class="fab fa-facebook-f"></i></span></a></li>

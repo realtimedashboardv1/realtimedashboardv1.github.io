@@ -42,26 +42,25 @@
                 "source": "realtime",
                 "reportSuiteID": config.reportSuite,
                 "metrics": [
-                    { "id": "pageviews" }
+                    { "id": "instances" }
                 ], "elements": [
-                    { "id": "prop1" },
+                    { "id": "region" }
                 ],
                 "dateGranularity": "minute:1",
                 "dateFrom": "-15 minutes"
             }
         };
 
-        
+
 
         //var trendGraph = new AnimatedTrendGraph("#trendGraph", { width: 660, height: 200, delay: 60000 });
         var donutChart = new DonutChart("#donutChart", { width: 300, height: 450 });
-        var basicTable = new BasicTable("#data-table", { columns: ["Page Name", "Page Views"] });
+        var basicTable = new BasicTable("#data-table", { columns: ["Region", "Instances"] });
 
         // number counter
         $(document).on("realtime-data-received", function (event, report) {
             // grab the total for this time period
             var total = report.totals[0];
-            console.log(report);
 
             // add a comma every thousand numbers (i.e. 1000 => 1,000)
             var commaStep = $.animateNumber.numberStepFactories.separator(',');
@@ -84,10 +83,14 @@
         //     //trendGraph.redrawGraph(data);
         // });
 
-        // donut chart and data-table
+        // donut chart
         $(document).on("realtime-data-received", function (event, report) {
             // we only update this chart once a minute
             donutChart.redrawChart(report.pageTotals);
+        });
+
+        // data table
+        $(document).on("realtime-data-received", function (event, report) {
             basicTable.update(report.pageTotals);
         });
 
@@ -134,7 +137,7 @@
             // request the initial report
             makeRealTimeRequest();
 
-            document.getElementById('time').addEventListener('change', function(obj) {
+            document.getElementById('time').addEventListener('change', function (obj) {
                 params.reportDescription.dateFrom = this.value;
                 makeRealTimeRequest();
             });
@@ -148,13 +151,13 @@
             <option value="-15 minutes">Last 15 minutes</option>
             <option value="-30 minutes">Last 30 minutes</option>
             <option value="-60 minutes">Last 1 hour</option>
-            <option value="-100 minutes">Last 2 hours</option>
+            <option value="-120 minutes">Last 2 hours</option>
         </select>
         <span id="clock-icon"><i class="far fa-clock"></i></span>
 
         <div id="numberWidget" class="widget third section">
             <div class="heading-one">
-                <h1>Page Views</h1>
+                <h1>Instances</h1>
                 <span id="total" class="number"><span class="wait"></span></span>
             </div>
         </div>
