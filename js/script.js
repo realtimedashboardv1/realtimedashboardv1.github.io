@@ -1,66 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <base href="../..">
-    <meta charset="utf-8" />
-    <title>Real-Time Dashboard</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;600;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css" type="text/css" />
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
-
-    <!--Include the libraries we will be using -->
-    <script src="https://kit.fontawesome.com/27c30df006.js" crossorigin="anonymous"></script>
-    <script src="js/jquery-2.1.0.min.js" type="text/javascript"></script>
-    <!-- Using D3 for Charting -->
-    <script src="js/d3.v2.js" type="text/javascript"></script>
-    <script src="js/d3.animated_trend.js" type="text/javascript"></script>
-    <script src="js/d3.donut.js" type="text/javascript"></script>
-
-    <!-- Using the Marketing Javascript SDK to pull the data -->
-    <script src="js/marketing-cloud-javascript-sdk/wsse.js" type="text/javascript"></script>
-    <script src="js/marketing-cloud-javascript-sdk/marketing_cloud.js" type="text/javascript"></script>
-
-    <script src="js/custom.js" type="text/javascript"></script>
-    <script src="js/jquery.basic_table.js" type="text/javascript"></script>
-
-    <!-- Using Jquery-animateNumber to change the number in a more eye catching way -->
-    <script src="js/jquery-animateNumber/jquery.animateNumber.min.js" type="text/javascript"></script>
-
-    <script src="js/config.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-
-        var method = 'Report.Run';
+var method = 'Report.Run';
 
         var params = {
             "reportDescription": {
                 "source": "realtime",
                 "reportSuiteID": config.reportSuite,
                 "metrics": [
-                    { "id": "instances" }
+                    { "id": "pageviews" }
                 ], "elements": [
-                    { "id": "georegion" }
+                    { "id": "prop1" },
                 ],
                 "dateGranularity": "minute:1",
                 "dateFrom": "-15 minutes"
             }
         };
 
-
+        
 
         //var trendGraph = new AnimatedTrendGraph("#trendGraph", { width: 660, height: 200, delay: 60000 });
         var donutChart = new DonutChart("#donutChart", { width: 300, height: 450 });
-        var basicTable = new BasicTable("#data-table", { columns: ["Region", "Instances"] });
+        var basicTable = new BasicTable("#data-table", { columns: ["Page Name", "Page Views"] });
 
         // number counter
         $(document).on("realtime-data-received", function (event, report) {
             // grab the total for this time period
             var total = report.totals[0];
+            console.log(report);
 
             // add a comma every thousand numbers (i.e. 1000 => 1,000)
             var commaStep = $.animateNumber.numberStepFactories.separator(',');
@@ -83,14 +47,10 @@
         //     //trendGraph.redrawGraph(data);
         // });
 
-        // donut chart
+        // donut chart and data-table
         $(document).on("realtime-data-received", function (event, report) {
             // we only update this chart once a minute
             donutChart.redrawChart(report.pageTotals);
-        });
-
-        // data table
-        $(document).on("realtime-data-received", function (event, report) {
             basicTable.update(report.pageTotals);
         });
 
@@ -137,47 +97,8 @@
             // request the initial report
             makeRealTimeRequest();
 
-            document.getElementById('time').addEventListener('change', function (obj) {
+            document.getElementById('time').addEventListener('change', function(obj) {
                 params.reportDescription.dateFrom = this.value;
                 makeRealTimeRequest();
             });
         });
-    </script>
-</head>
-
-<body id="index" class="home">
-    <div id="dashboard" class="main-content clearfix">
-        <select id="time">
-            <option value="-15 minutes">Last 15 minutes</option>
-            <option value="-30 minutes">Last 30 minutes</option>
-            <option value="-60 minutes">Last 1 hour</option>
-            <option value="-120 minutes">Last 2 hours</option>
-        </select>
-        <span id="clock-icon"><i class="far fa-clock"></i></span>
-
-        <div id="numberWidget" class="widget third section">
-            <div class="heading-one">
-                <h1>Instances</h1>
-                <span id="total" class="number"><span class="wait"></span></span>
-            </div>
-        </div>
-
-        <!-- <div id="trendGraph"></div> -->
-
-        <div id="donutChart" class="section">
-            <div id="explanation" style="visibility: hidden;">
-                <span id="percentage"></span><br />
-                of visitors visited
-            </div>
-            <div id="pagelabel">&nbsp;</div>
-            <div id="legend">&nbsp;</div>
-        </div>
-
-        <div id="ranked" class="section">
-            <!-- data table -->
-            <div id="data-table">&nbsp;</div>
-        </div>
-    </div>
-</body>
-
-</html>
