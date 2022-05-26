@@ -5,9 +5,9 @@ var method = 'Report.Run';
                 "source": "realtime",
                 "reportSuiteID": config.reportSuite,
                 "metrics": [
-                    { "id": "pageviews" }
+                    { "id": "cartadditions" }
                 ], "elements": [
-                    { "id": "prop1" },
+                    { "id": "product" },
                 ],
                 "dateGranularity": "minute:1",
                 "dateFrom": "-15 minutes"
@@ -18,7 +18,7 @@ var method = 'Report.Run';
 
         //var trendGraph = new AnimatedTrendGraph("#trendGraph", { width: 660, height: 200, delay: 60000 });
         var donutChart = new DonutChart("#donutChart", { width: 300, height: 450 });
-        var basicTable = new BasicTable("#data-table", { columns: ["Page Name", "Page Views"] });
+        var basicTable = new BasicTable("#data-table", { columns: ["Product", "Cart Addition"] });
 
         // number counter
         $(document).on("realtime-data-received", function (event, report) {

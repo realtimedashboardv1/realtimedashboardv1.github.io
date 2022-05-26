@@ -42,17 +42,17 @@
                 "source": "realtime",
                 "reportSuiteID": config.reportSuite,
                 "metrics": [
-                    { "id": "instances" },
+                    { "id": "checkouts" },
                 ], 
                 "elements": [
-                    { "id": "prop3" },
+                    { "id": "product" },
                 ],
                 "dateGranularity": "minute:1",
                 "dateFrom": "-15 minutes"
             }
         };
 
-        var basicTable = new BasicTable("#data-table", { columns: ["Site Section", "Instances"] });
+        var basicTable = new BasicTable("#data-table", { columns: ["Products", "Checkouts"] });
 
         // number counter
         $(document).on("realtime-data-received", function (event, report) {
@@ -134,7 +134,7 @@
         <span id="clock-icon"><i class="far fa-clock"></i></span>
         <div id="numberWidget" class="section">
             <div class="heading-one">
-                <h1>Instances</h1>
+                <h1>Checkout Instances</h1>
                 <span id="total" class="number"><span class="wait"></span></span>
             </div>
         </div>

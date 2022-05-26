@@ -42,7 +42,7 @@
                 "source": "realtime",
                 "reportSuiteID": config.reportSuite,
                 "metrics": [
-                    { "id": "instances" }
+                    { "id": "cartadditions" }
                 ], "elements": [
                     { "id": "georegion" }
                 ],
@@ -55,7 +55,7 @@
 
         //var trendGraph = new AnimatedTrendGraph("#trendGraph", { width: 660, height: 200, delay: 60000 });
         var donutChart = new DonutChart("#donutChart", { width: 300, height: 450 });
-        var basicTable = new BasicTable("#data-table", { columns: ["Region", "Instances"] });
+        var basicTable = new BasicTable("#data-table", { columns: ["Region", "Cart Additions"] });
 
         // number counter
         $(document).on("realtime-data-received", function (event, report) {
