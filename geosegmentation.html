@@ -42,9 +42,9 @@
                 "source": "realtime",
                 "reportSuiteID": config.reportSuite,
                 "metrics": [
-                    { "id": "cartadditions" }
+                    { "id": "instances" }
                 ], "elements": [
-                    { "id": "georegion" }
+                    { "id": "geocity" }
                 ],
                 "dateGranularity": "minute:1",
                 "dateFrom": "-15 minutes"
@@ -55,7 +55,7 @@
 
         //var trendGraph = new AnimatedTrendGraph("#trendGraph", { width: 660, height: 200, delay: 60000 });
         var donutChart = new DonutChart("#donutChart", { width: 300, height: 450 });
-        var basicTable = new BasicTable("#data-table", { columns: ["Region", "Cart Additions"] });
+        var basicTable = new BasicTable("#data-table", { columns: ["Geo City", "Instances"] });
 
         // number counter
         $(document).on("realtime-data-received", function (event, report) {
@@ -157,7 +157,7 @@
 
         <div id="numberWidget" class="widget third section">
             <div class="heading-one">
-                <h1>Cart Additions</h1>
+                <h1>Instances</h1>
                 <span id="total" class="number"><span class="wait"></span></span>
             </div>
         </div>
